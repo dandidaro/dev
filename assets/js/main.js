@@ -9,13 +9,31 @@ const divhero = document.querySelector('[data-scroll-id="hero"');
 
 scroller.on('scroll', (args) => {
   if(typeof args.currentElements['hero'] === 'object') {
-      let progress = args.currentElements['hero'].progress;
-      // console.log(progress);
-      divhero.style.opacity = 4 - ((progress * 8) - 1);
-      divhero.style.scale = 1 - ((progress * 2) - 1);
+    let progress = args.currentElements['hero'].progress;
+    console.log(progress);
+    divhero.style.opacity = 4 - ((progress * 8) - 1);
+    divhero.style.scale = 1 - ((progress * 2) - 1);
   }
 });
 
+const navbarHome = document.getElementById("navhome");
+const targetHome = document.getElementById("hero-id");
+
+const navbarWorks = document.getElementById("navworks");
+const targetWorks = document.getElementById("works-id")
+
+
+navbarHome.addEventListener("click", function(){
+  scroller.scrollTo(0);
+  navbarHome.classList.add("active");
+  navbarWorks.classList.remove("active");
+});
+
+navbarWorks.addEventListener("click", function(){
+  scroller.scrollTo(targetWorks);
+  navbarWorks.classList.add("active");
+  navbarHome.classList.remove("active");
+});
 
 /* Perspective on hero */
 let constrain = 100;

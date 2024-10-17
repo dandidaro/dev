@@ -16,19 +16,20 @@
     <!-- Navbar -->
     <div class="navbar">
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="google.com">Works</a></li>
-            <li><a href="google.com">About</a></li>
-            <li><a href="google.com">Resume</a></li>
+            <li><a id="navhome" class="active">Home</a></li>
+            <li><a id="navworks">Works</a></li>
+            <!-- <li><a href="google.com">About</a></li> -->
+            <!-- <li><a href="google.com">Resume</a></li> -->
         </ul>
     </div>
 
     <!-- Locomotive scroll container -->
     <div data-scroll-container>
         <div class="shape-one"></div>
+        <div class="shape-two"></div>
 
         <!-- Hero -->
-        <div class="fullpage align-vertical-middle" id="hero" data-scroll data-scroll-id="hero" data-scroll-speed=1>
+        <div class="fullpage align-vertical-middle" id="hero-id" data-scroll data-scroll-id="hero" data-scroll-speed=1>
             <div class="hero">
                 <div class="about">
                     <h1><span class="thick">Dandi</span> Darojat</h1>
@@ -42,9 +43,13 @@
                 </div>
             </div>
         </div>
-    
-        <div class="fullpage" data-scroll data-scroll-id="works" data-scroll-speed=1>
-            <h1>works</h1>
+        
+        <!-- Selected works -->
+        <div class="fullpage" id="works-id" data-scroll data-scroll-id="works" data-scroll-offset="1000" data-scroll-speed=1>
+            <div class="section-header">
+                <h1 class="top" data-scroll data-scroll-direction="horizontal" data-scroll-speed="1">WORKS</h1>
+                <h1 class="bottom" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1">WORKS</h1>
+            </div>
             <div class="tilt">
                 <img src="assets/images/works/epployee.png">
             </div>
