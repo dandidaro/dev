@@ -14,45 +14,59 @@
 </head>
 <body>
     <!-- Navbar -->
-    <div class="navbar">
+    <div class="navbar" data-scroll data-scroll-target="#scroll-target">
         <ul>
-            <li><a id="navhome" class="active">Home</a></li>
-            <li><a id="navworks">Works</a></li>
-            <!-- <li><a href="google.com">About</a></li> -->
+            <li><a id="nav-home" class="">Home</a></li>
+            <li><a id="nav-works" class="">Works</a></li>
+            <li><a id="nav-about" class="">About</a></li>
             <!-- <li><a href="google.com">Resume</a></li> -->
         </ul>
     </div>
 
     <!-- Locomotive scroll container -->
-    <div data-scroll-container>
+    <div data-scroll-container data-scroll id="scroll-target">
         <div class="shape-one"></div>
         <div class="shape-two"></div>
 
         <!-- Hero -->
-        <div class="fullpage align-vertical-middle" id="hero-id" data-scroll data-scroll-id="hero" data-scroll-speed=1>
+        <div class="fullpage align-vertical-middle" id="hero-id" data-scroll data-scroll-repeat="true" data-scroll-id="hero-id">
+            <div data-scroll data-scroll-repeat="true" data-scroll-id="hero" data-scroll-call="nav_home"></div>
             <div class="hero">
                 <div class="about">
                     <h1><span class="thick">Dandi</span> Darojat</h1>
                     <p>I'm a self-taught
                         <span class="accent">web frontend developer</span> and
                         <span class="accent">designer</span>. Currently based in Jakarta, Indonesia but ready to work remotely 🚀</p>
-                <a class="btn-primary icon-newtab" href="https://linkedin.com/in/dandidaro" target="_blank">Let's Connect</a>
-                </div>
-                <div class="hero-card" id="tilted">
-                    <img src="assets/images/example.svg">
-                </div>
+                        <a class="btn-primary icon-newtab" href="https://linkedin.com/in/dandidaro" target="_blank">Let's Connect</a>
+                    </div>
+                    <div class="hero-card" id="tilted">
+                        <img src="assets/images/example.svg">
+                    </div>
             </div>
         </div>
-        
+
         <!-- Selected works -->
-        <div class="fullpage" id="works-id" data-scroll data-scroll-id="works" data-scroll-offset="1000" data-scroll-speed=1>
+        <div class="fullpage" id="works-id">
             <div class="section-header">
                 <h1 class="top" data-scroll data-scroll-direction="horizontal" data-scroll-speed="1">WORKS</h1>
                 <h1 class="bottom" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1">WORKS</h1>
             </div>
-            <div class="tilt">
+            <div class="tilt" id="tilt">
                 <img src="assets/images/works/epployee.png">
             </div>
+            <div data-scroll data-scroll-repeat="true" data-scroll-id="works" data-scroll-call="nav_works"></div>
+        </div>
+
+        <!-- Selected works -->
+        <div class="fullpage" id="about-id" data-scroll data-scroll-repeat="true">
+            <div class="section-header">
+                <h1 class="top" data-scroll data-scroll-direction="horizontal" data-scroll-speed="1">ABOUT</h1>
+                <h1 class="bottom" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-1">ABOUT</h1>
+            </div>
+            <div class="tilt" id="tilt">
+                <img src="assets/images/works/epployee.png">
+            </div>
+            <div data-scroll data-scroll-repeat="true" data-scroll-id="about" data-scroll-call="nav_about"></div>
         </div>
 
     </div>

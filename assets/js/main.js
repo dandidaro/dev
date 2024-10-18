@@ -2,42 +2,76 @@
 const scroller = new LocomotiveScroll({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
+  scrollFromAnywhere: true,
+  reloadOnContextChange: true,
   multiplier: 0.5
 });
 
-const divhero = document.querySelector('[data-scroll-id="hero"');
+// Set all variables
+const divhero = document.querySelector('[data-scroll-id="hero-id"');
+const navbarHome = document.getElementById("nav-home");
+const navbarWorks = document.getElementById("nav-works");
+const navbarAbout = document.getElementById("nav-about");
 
+const targetHome = document.getElementById("hero-id");
+const targetWorks = document.getElementById("works-id");
+const targetAbout = document.getElementById("about-id");
+
+
+// All on-scroll animation purposes
 scroller.on('scroll', (args) => {
-  if(typeof args.currentElements['hero'] === 'object') {
-    let progress = args.currentElements['hero'].progress;
-    console.log(progress);
-    divhero.style.opacity = 4 - ((progress * 8) - 1);
-    divhero.style.scale = 1 - ((progress * 2) - 1);
+  if(typeof args.currentElements['hero-id'] === 'object') {
+    let progress = args.currentElements['hero-id'].progress;
+    divhero.style.opacity = 4 - ((progress * 7) - 1);
   }
 });
 
-const navbarHome = document.getElementById("navhome");
-const targetHome = document.getElementById("hero-id");
+scroller.on('call', (navMenu, state, event) => {
+  if(state === "enter"){
+    if(navMenu === "nav_home"){
+      navbarHome.classList.add('active');
+      navbarWorks.classList.remove('active');
+      // navbarAbout.classList.remove('active');
+      console.log(navMenu, state);
+    } else {
+      navbarHome.classList.remove('active');
+    }
+    if(navMenu === "nav_works"){
+      navbarWorks.classList.add('active');
+      navbarHome.classList.remove('active');
+      navbarAbout.classList.remove('active');
+      console.log(navMenu, state);
+    } else {
+      navbarWorks.classList.remove('active');
+    }
+    if(navMenu === "nav_about"){
+      navbarAbout.classList.add('active');
+      navbarWorks.classList.remove('active');
+      // navbarHome.classList.remove('active');
+      console.log(navMenu, state);
+    } else {
+      navbarAbout.classList.remove('active');
+    }
+  }
+});
 
-const navbarWorks = document.getElementById("navworks");
-const targetWorks = document.getElementById("works-id")
-
-
+// Navbar on-click purposes
 navbarHome.addEventListener("click", function(){
   scroller.scrollTo(0);
-  navbarHome.classList.add("active");
-  navbarWorks.classList.remove("active");
 });
 
 navbarWorks.addEventListener("click", function(){
-  scroller.scrollTo(targetWorks);
-  navbarWorks.classList.add("active");
-  navbarHome.classList.remove("active");
+  scroller.scrollTo(targetWorks, {'offset' : -100});
 });
+
+navbarAbout.addEventListener("click", function(){
+  scroller.scrollTo(targetAbout, {'offset' : -100});
+});
+
 
 /* Perspective on hero */
 let constrain = 100;
-let mouseOverContainer = document.getElementById("hero");
+let mouseOverContainer = document.getElementById("hero-id");
 let ex1Layer = document.getElementById("tilted");
 
 function transforms(x, y, el) {
