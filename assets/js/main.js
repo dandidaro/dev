@@ -8,9 +8,7 @@ $('.page-scroll').click(function(e){
 /* Perspective on hero */
 let constrain = 100;
 let mouseOverHome = document.querySelector('#home');
-let mouseOverWorks = document.querySelector('#works');
 let ex1Layer = document.querySelector("#tilted");
-let ex2Layer = document.querySelector("#tilted2");
 
 function transforms(x, y, el) {
   let box = el.getBoundingClientRect();
@@ -33,14 +31,5 @@ mouseOverHome.onmousemove = function(e) {
 
   window.requestAnimationFrame(function(){
     transformElement(ex1Layer, position);
-  });
-};
-
-mouseOverWorks.onmousemove = function(e) {
-  let xy = [e.clientX, e.clientY];
-  let position = xy.concat([ex1Layer]);
-
-  window.requestAnimationFrame(function(){
-    transformElement(ex2Layer, position);
   });
 };
